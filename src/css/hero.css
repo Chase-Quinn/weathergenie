@@ -1,0 +1,34 @@
+.rain{
+    background-image: url('../components/assets/rain.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.thunderstorm{
+    background-image: url('../components/assets/thunderstorm.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.sunny{
+    background-image: url('../components/assets/sunny.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.snow{
+    background-image: url('../components/assets/snow.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.cloudy{
+    background-image: url('../components/assets/cloudy.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
