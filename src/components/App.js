@@ -5,10 +5,6 @@ import Hero from './hero/Hero';
 import CurrentStatsCard from './cards/CurrentStats/CurrentStatsCard';
 // The api used is from Open Weather Map
 
-function getweather(res) {
-    const weather = res.data.current.weather;
-    return weather;
-};
 
 class App extends React.Component {
     constructor(props) {
@@ -19,21 +15,30 @@ class App extends React.Component {
         window.navigator.geolocation.getCurrentPosition(
             position => {
                 this.setState({ lat: position.coords.latitude, long: position.coords.longitude });
+                const res = getRequest(this.state.lat, this.state.long, this.state.apikey)
+                .then(result => {
+                    const weather = result.data.current;
+                    this.setState({currentWeather : weather});
+                })
             },
             err => console.log(err)
         );
+        
+
+        const getRequest = async(lat, long, apikey) => {
+            try {
+                const result = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${apikey}&units=imperial`);
+                return result;
+            }
+            catch(err){
+                console.error(err);
+            }
+        }
 
     }
 
-    componentDidUpdate() {
-        if (this.state.weather == null) {
-            axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.lat}&lon=${this.state.long}&
-            exclude={part}&appid=${this.state.apikey}&units=imperial`)
-                .then(res => {
-                    const currentJSON = res.data.current.weather[0].id;
-                    this.setState({currentWeather: currentJSON});
-                })
-        }
+    componentDidMount() {
+        console.log('App.js mounted')
     }
 
     render() {
