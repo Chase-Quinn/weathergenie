@@ -82,8 +82,7 @@ const Hero = props => {
                 <div className='col-12 row'>
                     <h1 className="display-4 col-12 text-center currentWeather">Current Weather</h1>
                     <h1 className="col-12 text-center" style={{'fontSize': '350%'}}>{currenttemp}°F</h1>
-                    <h1 className="col-12 text-center">Feels Like {feelsLike}°F</h1>
-                    <h2 className="col-12 text-center">{subheader}</h2>
+                    <h2 className="col-12 text-center">Feels Like {feelsLike}°F</h2>
                     <h2 className="col-12 text-center">{description}</h2>
                 </div>
             </div>
