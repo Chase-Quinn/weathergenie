@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import LocationError from './components/LocationError';
 import Spinner from './components/Spinner';
 import Navbar from './components/navigation/Navbar';
 import Hero from './components/hero/Hero';
@@ -13,7 +14,7 @@ class App extends React.Component {
     constructor(props) {
         super(props)
 
-        this.state = { lat: null, long: null, apikey: 'c1a3e75af3c0e91b7821f28f64d55d44', currentWeather: null }
+        this.state = { lat: null, long: null, apikey: 'c1a3e75af3c0e91b7821f28f64d55d44', currentWeather: null, error: null, errorMessage: null }
 
         window.navigator.geolocation.getCurrentPosition(
             position => {
@@ -24,7 +25,7 @@ class App extends React.Component {
                     this.setState({currentWeather : weather});
                 })
             },
-            err => console.log(err)
+            err => this.setState({error: err})
         );
         
 
@@ -45,7 +46,7 @@ class App extends React.Component {
     }
 
     render() {
-        if (this.state.currentWeather){
+        if (this.state.currentWeather && !this.state.error){
             return (
                 <div className='vw-100 row no-gutters'>
                     <Navbar name='Weather Genie' imagelink='#' imageurl='./assets/GenieBottleLogo.png' imagealt='Weather Genie Logo' />
@@ -54,6 +55,12 @@ class App extends React.Component {
                     <UVCard currentweather={this.state.currentWeather}/>
                 </div>
                 );
+        }
+
+        if(!this.state.currentWeather && this.state.error){
+            return (
+                <LocationError error={this.state.error.message} errorMessage = {this.state.errorMessage} />
+            );
         }
 
         return <Spinner />;

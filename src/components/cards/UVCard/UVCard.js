@@ -35,7 +35,7 @@ const UVCard = props => {
                     <h3>UV Index</h3>
                 </div>
                 <div className='col-12'>
-                    <p>Current Rating:</p>
+                    <p>Midday Rating:</p>
                     <h3>{uvrating} ({uvdescription})</h3>
                 </div>
                 <div className='col-1 1 my-auto' style={{ 'border': '1px solid black' }, { 'backgroundColor': 'green' }}>1</div>
