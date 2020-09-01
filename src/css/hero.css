@@ -32,3 +32,17 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+
+.drizzle{
+    background-image: url('../components/assets/drizzle.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.cloudy{
+    background-image: url('../components/assets/atmosphere.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

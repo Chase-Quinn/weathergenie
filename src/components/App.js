@@ -1,8 +1,10 @@
 import React from 'react';
 import axios from 'axios';
+import Spinner from './Spinner';
 import Navbar from './navigation/Navbar';
 import Hero from './hero/Hero';
 import CurrentStatsCard from './cards/CurrentStats/CurrentStatsCard';
+import UVCard from './cards/UVCard/UVCard';
 // The api used is from Open Weather Map
 
 
@@ -38,7 +40,7 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        console.log('App.js mounted')
+        console.log('app mounted');
     }
 
     render() {
@@ -48,7 +50,8 @@ class App extends React.Component {
             <div className='vw-100 row no-gutters'>
                 <Navbar name='Weather Genie' imagelink='#' imageurl='./assets/GenieBottleLogo.png' imagealt='Weather Genie Logo' />
                 <Hero header='Current Weather' currentweather={this.state.currentWeather} bgcolor='bg-dark text-light' />
-                <CurrentStatsCard />
+                <CurrentStatsCard currentweather={this.state.currentWeather} />
+                <UVCard currentweather={this.state.currentWeather}/>
             </div>)
     }
 
