@@ -53,6 +53,10 @@ function getDescription(res) {
     return b;
 }
 
+function getFeelsLike(res){
+    return Math.trunc(res.feels_like);
+}
+
 function titleCase(str) {
     var splitStr = str.toLowerCase().split(' ');
     for (var i = 0; i < splitStr.length; i++) {
@@ -62,7 +66,7 @@ function titleCase(str) {
  }
 
 const Hero = props => {
-    var currenttemp, subheader, icon, bgcolor, description;
+    var currenttemp, subheader, icon, bgcolor, description, feelsLike;
 
 
     if (props.currentweather != undefined){
@@ -70,6 +74,7 @@ const Hero = props => {
         const weathertype = getweathertype(weather);
         currenttemp = getcurrenttemp(weather);
         description = getDescription(weather);
+        feelsLike = getFeelsLike(weather);
         var { subheader, icon, bgcolor } = iconConfig[weathertype];
     }
         return (
@@ -77,6 +82,7 @@ const Hero = props => {
                 <div className='col-12 row'>
                     <h1 className="display-4 col-12 text-center currentWeather">Current Weather</h1>
                     <h1 className="col-12 text-center" style={{'fontSize': '350%'}}>{currenttemp}°F</h1>
+                    <h1 className="col-12 text-center">Feels Like {feelsLike}°F</h1>
                     <h2 className="col-12 text-center">{subheader}</h2>
                     <h2 className="col-12 text-center">{description}</h2>
                 </div>
